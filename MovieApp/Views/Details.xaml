@@ -8,7 +8,89 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Details">
 
-    <Grid>
-        
+    <Page.Resources>
+        <Style TargetType="Label" x:Key="LabelStyle">
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="VerticalAlignment" Value="Top"/>
+        </Style>
+        <Style TargetType="Button" x:Key="ButtonStyle">
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Margin" Value="10"/>
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="Width" Value="200"/>
+            <Setter Property="Height" Value="25"/>
+        </Style>
+        <Style TargetType="TextBox" x:Key="txbStyle">
+            <Setter Property="Width" Value="250"/>
+            <Setter Property="Height" Value="25"/>
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+    </Page.Resources>
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Button x:Name="btnEdit" Content="Edit"
+                Grid.Row="0" Grid.Column="1"
+                Style="{StaticResource ButtonStyle}" Click="btnEdit_Click"
+        />
+        <Button x:Name="btnDelete" Content="Delete"
+                Grid.Row="1" Grid.Column="1"
+                Style="{StaticResource ButtonStyle}" Click="btnDelete_Click"
+        />
+        <Button x:Name="btnNew" Content="New"
+                Grid.Row="2" Grid.Column="1"
+                Visibility="Visible"
+                Style="{StaticResource ButtonStyle}" Click="btnNew_Click"
+        />
+
+        <Button x:Name="btnReturn" Content="Return"
+                Grid.Row="2" Grid.Column="1"
+                VerticalAlignment="Bottom"
+                Style="{StaticResource ButtonStyle}" Click="btnReturn_Click"
+        />
+
+        <Label Content="Name:"
+               Grid.Row="0" Grid.Column="0"
+               Style="{StaticResource LabelStyle}"
+        />
+
+        <TextBox x:Name="txbName"
+                 Grid.Row="0" Grid.Column="0"
+                 Style="{StaticResource txbStyle}"
+        />
+
+        <Label Content="Duration:"
+               Grid.Row="1" Grid.Column="0"
+               Style="{StaticResource LabelStyle}"
+        />
+
+        <TextBox x:Name="txbDuration"
+                 Grid.Row="1" Grid.Column="0"
+                 Style="{StaticResource txbStyle}"
+        />
+
+        <Label Content="Summary:"
+               Grid.Row="2" Grid.Column="0"
+               Style="{StaticResource LabelStyle}"
+        />
+
+        <TextBox x:Name="txbSummary"
+                 Grid.Row="2" Grid.Column="0"
+                 Height="100"
+                 Style="{StaticResource txbStyle}"
+        />
+
     </Grid>
 </Page>
