@@ -28,7 +28,6 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
@@ -38,39 +37,41 @@
             <ColumnDefinition Width="200"/>
         </Grid.ColumnDefinitions>
 
-        <Button x:Name="btnConnect"
-            Content="Connect"
-            Grid.Row="0" Grid.Column="2"
-            Style="{StaticResource ButtonStyle}"
-        />
-
         <Button x:Name="btnSearch"
             Content="Search"
-            Grid.Row="1" Grid.Column="2"
-            Style="{StaticResource ButtonStyle}"
+            Grid.Row="0" Grid.Column="1"
+            Width="200"
+            HorizontalAlignment="Right"
+            Style="{StaticResource ButtonStyle}" Click="btnSearch_Click"
+        />
+        
+        <Button x:Name="btnReset"
+            Content="Reset"
+            Grid.Row="0" Grid.Column="2"
+            Style="{StaticResource ButtonStyle}" Click="btnReset_Click"
         />
 
         <Button x:Name="btnNew"
             Content="New"
-            Grid.Row="2" Grid.Column="2"
-            Style="{StaticResource ButtonStyle}"
+            Grid.Row="1" Grid.Column="2"
+            Style="{StaticResource ButtonStyle}" Click="btnNew_Click"
         />
 
         <Label Content="Name:"
-            Grid.Row="1" Grid.Column="0"
+            Grid.Row="0" Grid.Column="0"
             Style="{StaticResource LabelStyle}"
         />
 
         <TextBox x:Name="txbName"
-            Grid.Row="1" Grid.Column="1"
+            Grid.Row="0" Grid.Column="1"
             Style="{StaticResource txbStyle}"
         />
 
         <DataGrid x:Name="dgrMovies" 
-            Grid.Row="4" Grid.Column="0"
+            Grid.Row="2" Grid.Column="0"
             Grid.ColumnSpan="3"
             IsReadOnly="True"
-            SelectionMode="Extended"
+            SelectionMode="Extended" SelectionChanged="dgrMovies_SelectionChanged_1"
         />
 
     </Grid>
