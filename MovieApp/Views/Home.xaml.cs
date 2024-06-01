@@ -36,25 +36,22 @@ namespace MovieApp.Views
         public Home(Frame mainFrame)
         {
             InitializeComponent();
-            this.mainFrame = mainFrame;
-            dbConnection = new SqlConnection(Helpers.Constants.DbConnectionString);
-            connect();
+            this.mainFrame = mainFrame;             //Get the frame of the MainWindow
+            dbConnection = new SqlConnection(Helpers.Constants.DbConnectionString);     //Create connection to database
+            connect();               //Connect to database
         }
 
-        private void btnConnect_Click(object sender, RoutedEventArgs e)
-        {
-            connect();
-        }
-
+        //Function to search movie by their name
         private void btnSearch_Click(object sender, RoutedEventArgs e)
         {
             if(txbName.Text != string.Empty)
             {
-                string name = txbName.Text;
-                LoadData($"SELECT * FROM Movies WHERE Name LIKE '{name}%' ORDER BY Name");
+                string name = txbName.Text;     //Get the text enter by user
+                LoadData($"SELECT * FROM Movies WHERE Name LIKE '%{name}%' ORDER BY Name"); // Function load to show all the movie which contains the text enter by the user
             }
         }
 
+        // Navigate to details page to create a movie
         private void btnNew_Click(object sender, RoutedEventArgs e)
         {
             Movie movie = new Movie();
@@ -64,6 +61,7 @@ namespace MovieApp.Views
             }
         }
 
+        // Show the movie in the datagrid. Take in parameter the text of the query
         public void LoadData(string sql)
         {
             SqlCommand command = new SqlCommand(sql, dbConnection);
@@ -97,8 +95,10 @@ namespace MovieApp.Views
             LoadData("SELECT * FROM Movies  ORDER BY Name");
         }
 
+        //When you click on a item (movie) in the grid. It redirect you to the details page
         private void dgrMovies_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
         {
+            //Check if there is an item selected (movie)
             if (dgrMovies.SelectedItem != null)
             {
                 Movie movie = dgrMovies.SelectedItem as Movie;
@@ -109,6 +109,7 @@ namespace MovieApp.Views
             }
         }
 
+        //Connect to the database
         private void connect()
         {
             try
